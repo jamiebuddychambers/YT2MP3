@@ -35,7 +35,7 @@ shadow.place(relx=0.5, rely=0.5, anchor="center", width=500, height=270)
 
 # Card
 card = tk.Frame(root, bg=CARD)
-card.place(relx=0.5, rely=0.5, anchor="center", width=490, height=280)
+card.place(relx=0.5, rely=0.5, anchor="center", width=490, height=300)
 
 # ---------------- TITLE ----------------
 tk.Label(
@@ -158,3 +158,4 @@ status = tk.Label(
 status.pack(side="bottom", fill="x")
 
 root.mainloop()
+
