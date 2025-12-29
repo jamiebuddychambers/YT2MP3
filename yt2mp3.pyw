@@ -3,9 +3,9 @@ from tkinter import messagebox, filedialog
 import yt_dlp
 import threading
 import os
+import shutil
 
 # ---------------- CONFIG ----------------
-FFMPEG_PATH = r"C:\ffmpeg-master-latest-win64-gpl-shared\bin" #IMPORTANT: Change to your ffmpeg bin file directory
 BG = "#1e1e1e"
 CARD = "#2b2b2b"
 ACCENT = "#0078D4"
@@ -13,6 +13,25 @@ TEXT = "#ffffff"
 SUBTEXT = "#aaaaaa"
 
 selected_folder = None
+
+# ---------------- FIND FFMPEG ----------------
+def get_ffmpeg_path():
+    # 1. Check if ffmpeg is in PATH
+    ffmpeg_path = shutil.which("ffmpeg")
+
+    # 2. Check default folder if not found
+    if not ffmpeg_path:
+        default_path = r"C:\ffmpeg-master-latest-win64-gpl-shared\bin\ffmpeg.exe"
+        if os.path.exists(default_path):
+            ffmpeg_path = default_path
+
+    if not ffmpeg_path:
+        raise FileNotFoundError("ffmpeg executable not found. Please install ffmpeg or add it to PATH.")
+
+    return os.path.dirname(ffmpeg_path)
+
+FFMPEG_PATH = get_ffmpeg_path()
+print("Using ffmpeg at:", FFMPEG_PATH)
 
 # ---------------- HELPERS ----------------
 def shorten_path(path, max_len=45):
@@ -154,5 +173,3 @@ status = tk.Label(
 status.pack(side="bottom", fill="x")
 
 root.mainloop()
-
-
