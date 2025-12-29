@@ -29,10 +29,6 @@ root.geometry("520x390")
 root.resizable(False, False)
 root.configure(bg=BG)
 
-# Fake shadow
-shadow = tk.Frame(root, bg="#141414")
-shadow.place(relx=0.5, rely=0.5, anchor="center", width=500, height=270)
-
 # Card
 card = tk.Frame(root, bg=CARD)
 card.place(relx=0.5, rely=0.5, anchor="center", width=490, height=300)
@@ -158,4 +154,5 @@ status = tk.Label(
 status.pack(side="bottom", fill="x")
 
 root.mainloop()
+
 
